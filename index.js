@@ -1,6 +1,7 @@
 let http = require("http");
 let fs = require("fs");
 let path = require("path");
+let db = require("./database");
 
 let indexHtmlFile = fs.readFileSync(path.join(__dirname, "static", "index.html"));
 let styleFile = fs.readFileSync(path.join(__dirname, "static", "style.css"));
@@ -21,7 +22,6 @@ const server = http.createServer((req, res) => {
 server.listen(3000);
 
 const { Server } = require("socket.io");
-const { Socket } = require("dgram");
 const io = new Server(server);
 
 io.on("connection", socket => {
